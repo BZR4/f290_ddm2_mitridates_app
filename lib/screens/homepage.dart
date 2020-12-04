@@ -1,4 +1,8 @@
+import 'package:f290_ddm2_mitridates_app/screens/squad.dart';
+import 'package:f290_ddm2_mitridates_app/screens/vitrine.dart';
 import 'package:flutter/material.dart';
+
+import 'categorias.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -7,7 +11,15 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var selectedPage = 0;
-  var pages = [Vitrine(), Categorias(), Squad()];
+  var pages = List<Widget>();
+
+  @override
+  void initState() {
+    super.initState();
+    pages.add(Vitrine());
+    pages.add(Categorias());
+    pages.add(Squad());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +72,10 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: pages[selectedPage],
+      body: IndexedStack(
+        index: selectedPage,
+        children: pages,
+      ),
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Vitrine'),
@@ -74,48 +89,6 @@ class _HomePageState extends State<HomePage> {
           });
         },
       ),
-    );
-  }
-}
-
-class Vitrine extends StatefulWidget {
-  @override
-  _VitrineState createState() => _VitrineState();
-}
-
-class _VitrineState extends State<Vitrine> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.deepOrange),
-    );
-  }
-}
-
-class Categorias extends StatefulWidget {
-  @override
-  _CategoriasState createState() => _CategoriasState();
-}
-
-class _CategoriasState extends State<Categorias> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.deepPurple),
-    );
-  }
-}
-
-class Squad extends StatefulWidget {
-  @override
-  _SquadState createState() => _SquadState();
-}
-
-class _SquadState extends State<Squad> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(color: Colors.pink),
     );
   }
 }
