@@ -1,5 +1,5 @@
-import 'package:f290_ddm2_mitridates_app/screens/squad.dart';
-import 'package:f290_ddm2_mitridates_app/screens/vitrine.dart';
+import 'package:f290_ddm2_mitridates_app/screens/squad_page.dart';
+import 'package:f290_ddm2_mitridates_app/screens/vitrine_page.dart';
 import 'package:flutter/material.dart';
 
 import 'categorias.dart';

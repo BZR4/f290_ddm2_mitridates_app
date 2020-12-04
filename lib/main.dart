@@ -1,4 +1,5 @@
-import 'package:f290_ddm2_mitridates_app/screens/homepage.dart';
+import 'package:f290_ddm2_mitridates_app/constants/contants.dart';
+import 'package:f290_ddm2_mitridates_app/screens/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Mitrídates',
       theme: ThemeData(
+        scaffoldBackgroundColor: kBackgroundColor,
         primarySwatch: Colors.blue,
       ),
       home: HomePage(),
