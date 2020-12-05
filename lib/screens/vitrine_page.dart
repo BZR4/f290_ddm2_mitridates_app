@@ -28,15 +28,16 @@ class _VitrinePageState extends State<VitrinePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8F9FC),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: FutureBuilder(
-          future: _loadData(),
-          builder: (context, snapshot) {
-            return ListView.builder(
-              itemCount: vitrine.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
+      body: FutureBuilder(
+        future: _loadData(),
+        builder: (context, snapshot) {
+          return ListView.builder(
+            itemCount: vitrine.length,
+            itemBuilder: (BuildContext context, int index) {
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Card(
+                  elevation: 6,
                   child: ClipPath(
                     child: Container(
                       decoration: BoxDecoration(
@@ -124,11 +125,11 @@ class _VitrinePageState extends State<VitrinePage> {
                       ),
                     ),
                   ),
-                );
-              },
-            );
-          },
-        ),
+                ),
+              );
+            },
+          );
+        },
       ),
     );
   }

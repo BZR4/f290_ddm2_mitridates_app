@@ -13,7 +13,8 @@ class MyApp extends StatelessWidget {
       title: 'Mitrídates',
       theme: ThemeData(
         scaffoldBackgroundColor: kBackgroundColor,
-        primarySwatch: Colors.blue,
+        primaryColor: kPrimaryColor,
+        primaryColorDark: kPrimaryColorDark,
       ),
       home: HomePage(),
     );
