@@ -1,7 +1,6 @@
-import 'dart:io';
+import 'dart:convert';
 import 'package:f290_ddm2_mitridates_app/model/vitrine.dart';
 import 'package:http/http.dart' as http;
-import 'dart:convert' as convert;
 import 'package:url_launcher/url_launcher.dart';
 
 class VitrineService {
@@ -9,14 +8,18 @@ class VitrineService {
 
   Future<List<Vitrine>> getVitrine() async {
     var response = await http.get(url, headers: {
-      HttpHeaders.contentTypeHeader: "charset=utf-8",
+      // HttpHeaders.contentTypeHeader: "charset=utf-8",
+      'Content-Type': 'application/json',
     });
     var vitrine = List<Vitrine>();
     try {
       if (response.statusCode == 200) {
-        var jsonResultList = convert.jsonDecode(response.body);
+        List<dynamic> jsonResultList =
+            json.decode(utf8.decode(response.bodyBytes));
+        // var jsonResultList = convert.jsonDecode(response.body);
         vitrine =
-            (jsonResultList as List).map((c) => (Vitrine.fromJson(c))).toList();
+            // (jsonResultList as List).map((c) => (Vitrine.fromJson(c))).toList();
+            (jsonResultList).map((c) => (Vitrine.fromJson(c))).toList();
       }
       return vitrine;
     } catch (e) {
