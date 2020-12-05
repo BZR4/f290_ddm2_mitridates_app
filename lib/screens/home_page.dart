@@ -1,5 +1,6 @@
 import 'package:f290_ddm2_mitridates_app/screens/squad_page.dart';
 import 'package:f290_ddm2_mitridates_app/screens/vitrine_page.dart';
+import 'package:f290_ddm2_mitridates_app/services/vitrine_service.dart';
 import 'package:flutter/material.dart';
 
 import 'categorias.dart';
@@ -13,12 +14,24 @@ class _HomePageState extends State<HomePage> {
   var selectedPage = 0;
   var pages = List<Widget>();
 
+  final service = VitrineService();
+
   @override
   void initState() {
     super.initState();
-    pages.add(Vitrine());
-    pages.add(Categorias());
+    pages.add(VitrinePage());
+    pages.add(CategoriaPage());
     pages.add(Squad());
+
+    _loadVitrine();
+  }
+
+  _loadVitrine() async {
+    service.getVitrine().then((list) {
+      list.forEach((element) {
+        print(element);
+      });
+    });
   }
 
   @override

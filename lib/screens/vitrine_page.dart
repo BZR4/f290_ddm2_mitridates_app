@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class Vitrine extends StatefulWidget {
+class VitrinePage extends StatefulWidget {
   @override
-  _VitrineState createState() => _VitrineState();
+  _VitrinePageState createState() => _VitrinePageState();
 }
 
 /*
@@ -14,35 +14,38 @@ descricao ->
 vermais -> git, linkedin -> botoes com link
 */
 
-class _VitrineState extends State<Vitrine> {
+class _VitrinePageState extends State<VitrinePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0xFFF8F9FC),
-      body: ListView.builder(
-        itemCount: 5,
-        itemBuilder: (BuildContext context, int index) {
-          return Card(
-            child: ClipPath(
-              child: Container(
-                height: 150,
-                decoration: BoxDecoration(
-                  border: Border(
-                    left: BorderSide(
-                      color: Colors.blueAccent,
-                      width: 8,
+      body: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.builder(
+          itemCount: 5,
+          itemBuilder: (BuildContext context, int index) {
+            return Card(
+              child: ClipPath(
+                child: Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    border: Border(
+                      left: BorderSide(
+                        color: Colors.blueAccent,
+                        width: 8,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              clipper: ShapeBorderClipper(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(4),
+                clipper: ShapeBorderClipper(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(4),
+                  ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }

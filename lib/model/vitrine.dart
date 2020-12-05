@@ -14,4 +14,9 @@ class Vitrine {
     curso = json['curso'];
     tipoVaga = json['tipo_vaga'];
   }
+
+  @override
+  String toString() {
+    return 'Vitrine{aluno=$aluno, descricao=$descricao, linkedin=$linkedin, github=$github, curso=$curso, tipoVaga: $tipoVaga}';
+  }
 }
