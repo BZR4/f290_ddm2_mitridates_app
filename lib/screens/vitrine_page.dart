@@ -86,34 +86,33 @@ class _VitrinePageState extends State<VitrinePage> {
                                   style: TextStyle(fontFamily: 'Nunito')),
                               ButtonBar(
                                 children: [
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.linkedin,
-                                      color: vitrine[index].linkedin.isNotEmpty
-                                          ? kPrimaryColor
-                                          : kDisabledColor,
-                                    ),
-                                    onPressed: () {
-                                      if (vitrine[index].linkedin.isNotEmpty) {
-                                        var url = vitrine[index].linkedin;
-                                        service.launchUrl(url);
-                                      }
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.github,
-                                      color: vitrine[index].github.isNotEmpty
-                                          ? kPrimaryColor
-                                          : kDisabledColor,
-                                    ),
-                                    onPressed: () {
-                                      if (vitrine[index].github.isNotEmpty) {
-                                        var url = vitrine[index].github;
-                                        service.launchUrl(url);
-                                      }
-                                    },
-                                  ),
+                                  (vitrine[index].linkedin.isNotEmpty)
+                                      ? IconButton(
+                                          icon: Icon(
+                                            FontAwesomeIcons.linkedin,
+                                            color: kPrimaryColor,
+                                          ),
+                                          onPressed: () {
+                                            var url = vitrine[index].linkedin;
+                                            service.launchUrl(url);
+                                          })
+                                      : Text(""),
+                                  (vitrine[index].github.isNotEmpty)
+                                      ? IconButton(
+                                          icon: Icon(
+                                            FontAwesomeIcons.github,
+                                            color: kPrimaryColor,
+                                          ),
+                                          onPressed: () {
+                                            if (vitrine[index]
+                                                .github
+                                                .isNotEmpty) {
+                                              var url = vitrine[index].github;
+                                              service.launchUrl(url);
+                                            }
+                                          },
+                                        )
+                                      : Text(""),
                                 ],
                               )
                             ]),
