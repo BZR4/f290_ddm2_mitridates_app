@@ -21,7 +21,7 @@ class _VitrinePageState extends State<VitrinePage> {
   }
 
   _loadData() async {
-    vitrine = await service.getVitrine();
+    vitrine = await service.getVitrine('');
   }
 
   @override
