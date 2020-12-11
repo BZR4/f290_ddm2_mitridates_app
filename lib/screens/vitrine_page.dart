@@ -77,7 +77,7 @@ class _VitrinePageState extends State<VitrinePage> {
                               Text('Curso: ${vitrine[index].curso}',
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 22,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w500)),
                               SizedBox(
                                 height: 16,
