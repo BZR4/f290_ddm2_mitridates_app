@@ -4,13 +4,21 @@ import 'package:http/http.dart' as http;
 import 'package:url_launcher/url_launcher.dart';
 
 class VitrineService {
-  final url = 'https://plataforma-fatec-araras-api.herokuapp.com/api/vitrine/';
+  final url = 'http://18.231.178.234/api/vitrine/';
 
-  Future<List<Vitrine>> getVitrine() async {
-    var response = await http.get(url, headers: {
-      // HttpHeaders.contentTypeHeader: "charset=utf-8",
-      'Content-Type': 'application/json',
-    });
+  Future<List<Vitrine>> getVitrine(String filtro) async {
+    http.Response response;
+    if (filtro.isNotEmpty) {
+      response = await http.get(url + 'tipo/' + filtro, headers: {
+        // HttpHeaders.contentTypeHeader: "charset=utf-8",
+        'Content-Type': 'application/json',
+      });
+    } else {
+      response = await http.get(url, headers: {
+        // HttpHeaders.contentTypeHeader: "charset=utf-8",
+        'Content-Type': 'application/json',
+      });
+    }
     var vitrine = List<Vitrine>();
     try {
       if (response.statusCode == 200) {
