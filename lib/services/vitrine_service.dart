@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:f290_ddm2_mitridates_app/model/vitrine.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as convert;
@@ -8,9 +7,7 @@ class VitrineService {
   final url = 'https://plataforma-fatec-araras-api.herokuapp.com/api/vitrine/';
 
   Future<List<Vitrine>> getVitrine() async {
-    var response = await http.get(url, headers: {
-      HttpHeaders.contentTypeHeader: "charset=utf-8",
-    });
+    var response = await http.get(url);
     var vitrine = List<Vitrine>();
     try {
       if (response.statusCode == 200) {

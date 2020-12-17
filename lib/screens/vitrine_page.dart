@@ -43,7 +43,7 @@ class _VitrinePageState extends State<VitrinePage> {
                       decoration: BoxDecoration(
                         border: Border(
                           left: BorderSide(
-                            color: Colors.blueAccent,
+                            color: kPrimaryColor,
                             width: 8,
                           ),
                         ),
