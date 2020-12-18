@@ -85,10 +85,7 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
       ),
-      body: IndexedStack(
-        index: selectedPage,
-        children: pages,
-      ),
+      body: pages[selectedPage],
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Vitrine'),

@@ -5,11 +5,15 @@ import 'package:flutter/cupertino.dart';
 class CategoriasController {
   List<Vitrine> vitrine = [];
   final VitrineRepository _repository;
-  final state = ValueNotifier<CategoriasState>(CategoriasState.start);
+  final state = ValueNotifier<CategoriasState>(CategoriasState.pre);
   // CategoriasState state = CategoriasState.start;
 
   CategoriasController([VitrineRepository repository])
       : _repository = repository ?? VitrineRepository();
+
+  pre() {
+    state.value = CategoriasState.pre;
+  }
 
   Future start(String filtro) async {
     state.value = CategoriasState.loading;
@@ -22,4 +26,4 @@ class CategoriasController {
   }
 }
 
-enum CategoriasState { start, loading, success, error }
+enum CategoriasState { pre, start, loading, success, error }

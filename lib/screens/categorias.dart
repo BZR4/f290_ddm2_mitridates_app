@@ -1,7 +1,11 @@
+import 'package:f290_ddm2_mitridates_app/constants/contants.dart';
 import 'package:f290_ddm2_mitridates_app/controllers/categorias_controller.dart';
+import 'package:f290_ddm2_mitridates_app/services/vitrine_service.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // import 'categoria_page.dart';
+// List<Vitrine> vitrine = List<Vitrine>();
 
 class CategoriasPage extends StatefulWidget {
   @override
@@ -10,8 +14,9 @@ class CategoriasPage extends StatefulWidget {
 
 class _CategoriasPageState extends State<CategoriasPage> {
   final controller = CategoriasController();
+  final service = VitrineService();
 
-  _success() {
+  _pre() {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -46,7 +51,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
                 child: FlatButton(
                   onPressed: () {
                     print('Estágio');
-                    controller.start('0');
+                    controller.start('1');
 
                     // List<Vitrine> vitrine = Navigator.push(
                     //     context,
@@ -64,7 +69,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
                 child: FlatButton(
                   onPressed: () {
                     print('Trabalho');
-                    controller.start('1');
+                    controller.start('0');
 
                     // List<Vitrine> vitrine = Navigator.push(
                     //     context,
@@ -110,6 +115,133 @@ class _CategoriasPageState extends State<CategoriasPage> {
     );
   }
 
+  _success() {
+    // return SingleChildScrollView(
+    //   child: Column(
+    //     children: [
+    // return Column(
+    //   children: [
+    //     // mainAxisAlignment: MainAxisAlignment.center,
+    //     // child:
+    //     Card(
+    //       child: FlatButton(
+    //         onPressed: () {
+    //           print('voltar');
+    //           controller.pre();
+    //         },
+    //         child: Text(
+    //           'Limpar',
+    //           // style: Theme.of(context).textTheme.headline4,
+    //         ),
+    //       ),
+    //     ),
+    //     //   ],
+    //     // ),
+    return ListView.builder(
+      itemCount: controller.vitrine.length,
+      itemBuilder: (BuildContext context, int index) {
+        return Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Card(
+            elevation: 6,
+            child: ClipPath(
+              child: Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    left: BorderSide(
+                      color: Colors.blueAccent,
+                      width: 8,
+                    ),
+                  ),
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(controller.vitrine[index].tipoVaga,
+                            style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontSize: 24,
+                                fontWeight: FontWeight.w900)),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Divider(height: 1, color: kDisabledColor),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text('Aluno: ${controller.vitrine[index].aluno}',
+                            style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontSize: 18,
+                                fontWeight: FontWeight.w500)),
+                        SizedBox(
+                          height: 8,
+                        ),
+                        Text('Curso: ${controller.vitrine[index].curso}',
+                            style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontSize: 22,
+                                fontWeight: FontWeight.w500)),
+                        SizedBox(
+                          height: 16,
+                        ),
+                        Text(controller.vitrine[index].descricao,
+                            style: TextStyle(fontFamily: 'Nunito')),
+                        ButtonBar(
+                          children: [
+                            (controller.vitrine[index].linkedin.isNotEmpty)
+                                ? IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.linkedin,
+                                      color: kPrimaryColor,
+                                    ),
+                                    onPressed: () {
+                                      var url =
+                                          controller.vitrine[index].linkedin;
+                                      service.launchUrl(url);
+                                    })
+                                : Text(""),
+                            (controller.vitrine[index].github.isNotEmpty)
+                                ? IconButton(
+                                    icon: Icon(
+                                      FontAwesomeIcons.github,
+                                      color: kPrimaryColor,
+                                    ),
+                                    onPressed: () {
+                                      if (controller
+                                          .vitrine[index].github.isNotEmpty) {
+                                        var url =
+                                            controller.vitrine[index].github;
+                                        service.launchUrl(url);
+                                      }
+                                    },
+                                  )
+                                : Text(""),
+                          ],
+                        )
+                      ]),
+                ),
+              ),
+              clipper: ShapeBorderClipper(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(4),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      //       ),
+      //     ],
+      //   ),
+      //   ),
+      // ],
+    );
+  }
+
   _error() {
     return Center(
       child: RaisedButton(
@@ -131,6 +263,9 @@ class _CategoriasPageState extends State<CategoriasPage> {
 
   stateManagement(CategoriasState state) {
     switch (state) {
+      case CategoriasState.pre:
+        return _pre();
+
       case CategoriasState.start:
         return _start();
 
@@ -151,7 +286,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
   @override
   void initState() {
     super.initState();
-    controller.start('');
+    controller.pre();
   }
 
   @override
