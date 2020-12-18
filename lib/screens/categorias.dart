@@ -49,7 +49,7 @@ class _CategoriaPagesState extends State<CategoriasPage> {
                           onPressed: () {
                             print('precionado');
 
-                            List<Vitrine> vitrine = Navigator.push(
+                            Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
@@ -90,7 +90,7 @@ class _CategoriaPagesState extends State<CategoriasPage> {
     );
   }
 
-  _loadData(String filtro) async {
-    vitrine = await service.getVitrine(filtro);
-  }
+  // _loadData(String filtro) async {
+  //   vitrine = await service.getVitrine(filtro);
+  // }
 }

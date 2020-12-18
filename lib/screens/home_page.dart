@@ -90,6 +90,7 @@ class _HomePageState extends State<HomePage> {
         children: pages,
       ),
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedPage,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Vitrine'),
           BottomNavigationBarItem(
