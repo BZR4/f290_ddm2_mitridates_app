@@ -8,6 +8,7 @@ class VitrineService {
 
   Future<List<Vitrine>> getVitrine(String filtro) async {
     http.Response response;
+    // await new Future.delayed(const Duration(seconds: 3));
     if (filtro.isNotEmpty) {
       response = await http.get(url + 'tipo/' + filtro, headers: {
         // HttpHeaders.contentTypeHeader: "charset=utf-8",

@@ -138,7 +138,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
     //     //   ],
     //     // ),
     return ListView.builder(
-      itemCount: controller.vitrine.length,
+      itemCount: controller.vitrines.length,
       itemBuilder: (BuildContext context, int index) {
         return Padding(
           padding: const EdgeInsets.all(8.0),
@@ -160,7 +160,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(controller.vitrine[index].tipoVaga,
+                        Text(controller.vitrines[index].tipoVaga,
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontSize: 24,
@@ -172,7 +172,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
                         SizedBox(
                           height: 16,
                         ),
-                        Text('Aluno: ${controller.vitrine[index].aluno}',
+                        Text('Aluno: ${controller.vitrines[index].aluno}',
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontSize: 18,
@@ -180,7 +180,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
                         SizedBox(
                           height: 8,
                         ),
-                        Text('Curso: ${controller.vitrine[index].curso}',
+                        Text('Curso: ${controller.vitrines[index].curso}',
                             style: TextStyle(
                                 fontFamily: 'Nunito',
                                 fontSize: 22,
@@ -188,11 +188,11 @@ class _CategoriasPageState extends State<CategoriasPage> {
                         SizedBox(
                           height: 16,
                         ),
-                        Text(controller.vitrine[index].descricao,
+                        Text(controller.vitrines[index].descricao,
                             style: TextStyle(fontFamily: 'Nunito')),
                         ButtonBar(
                           children: [
-                            (controller.vitrine[index].linkedin.isNotEmpty)
+                            (controller.vitrines[index].linkedin.isNotEmpty)
                                 ? IconButton(
                                     icon: Icon(
                                       FontAwesomeIcons.linkedin,
@@ -200,11 +200,11 @@ class _CategoriasPageState extends State<CategoriasPage> {
                                     ),
                                     onPressed: () {
                                       var url =
-                                          controller.vitrine[index].linkedin;
+                                          controller.vitrines[index].linkedin;
                                       service.launchUrl(url);
                                     })
                                 : Text(""),
-                            (controller.vitrine[index].github.isNotEmpty)
+                            (controller.vitrines[index].github.isNotEmpty)
                                 ? IconButton(
                                     icon: Icon(
                                       FontAwesomeIcons.github,
@@ -212,9 +212,9 @@ class _CategoriasPageState extends State<CategoriasPage> {
                                     ),
                                     onPressed: () {
                                       if (controller
-                                          .vitrine[index].github.isNotEmpty) {
+                                          .vitrines[index].github.isNotEmpty) {
                                         var url =
-                                            controller.vitrine[index].github;
+                                            controller.vitrines[index].github;
                                         service.launchUrl(url);
                                       }
                                     },

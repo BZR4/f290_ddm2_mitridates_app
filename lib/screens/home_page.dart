@@ -1,3 +1,4 @@
+import 'package:f290_ddm2_mitridates_app/controllers/categorias_controller.dart';
 import 'package:f290_ddm2_mitridates_app/screens/squad_page.dart';
 import 'package:f290_ddm2_mitridates_app/screens/vitrine_page.dart';
 import 'package:f290_ddm2_mitridates_app/services/vitrine_service.dart';
@@ -13,6 +14,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var selectedPage = 0;
   var pages = List<Widget>();
+  List<Widget> botoesactions = [];
 
   final service = VitrineService();
 
@@ -38,6 +40,7 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: botoesactions,
         title: Text('Mitrídates'),
       ),
       drawer: SafeArea(
@@ -87,6 +90,7 @@ class _HomePageState extends State<HomePage> {
       ),
       body: pages[selectedPage],
       bottomNavigationBar: BottomNavigationBar(
+        currentIndex: selectedPage,
         items: [
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Vitrine'),
           BottomNavigationBarItem(
@@ -96,9 +100,29 @@ class _HomePageState extends State<HomePage> {
         onTap: (index) {
           setState(() {
             selectedPage = index;
+            // (selectedPage == 1)
+            //     ? botoesactions = <Widget>[
+            //         IconButton(
+            //           constraints: BoxConstraints.expand(width: 80),
+            //           icon: Text('Limpa Filtro', textAlign: TextAlign.center),
+            //           onPressed: () {
+            //             print('limpa1');
+            //             CategoriasController().start('1');
+            //           },
+            //         ),
+            //       ]
+            //     : botoesactions = [];
           });
         },
       ),
     );
   }
 }
+
+// actions: <Widget>[
+//           IconButton(
+//             constraints: BoxConstraints.expand(width: 80),
+//             icon: Text('Limpa Filtro', textAlign: TextAlign.center),
+//             onPressed: () {},
+//           ),
+//         ],

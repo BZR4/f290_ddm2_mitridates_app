@@ -3,7 +3,7 @@ import 'package:f290_ddm2_mitridates_app/repositories/vitrine_repository.dart';
 import 'package:flutter/cupertino.dart';
 
 class CategoriasController {
-  List<Vitrine> vitrine = [];
+  List<Vitrine> vitrines = [];
   final VitrineRepository _repository;
   final state = ValueNotifier<CategoriasState>(CategoriasState.pre);
   // CategoriasState state = CategoriasState.start;
@@ -18,7 +18,7 @@ class CategoriasController {
   Future start(String filtro) async {
     state.value = CategoriasState.loading;
     try {
-      vitrine = await _repository.fetchVitrine(filtro);
+      vitrines = await _repository.fetchVitrine(filtro);
       state.value = CategoriasState.success;
     } catch (e) {
       state.value = CategoriasState.error;
