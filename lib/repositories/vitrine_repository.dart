@@ -3,11 +3,11 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 
 class VitrineRepository {
-  var url = 'http://18.231.178.234/api/vitrine/';
-
   Future<List<Vitrine>> fetchVitrine(String filtro) async {
+    var url = 'http://18.231.178.234/api/vitrine/';
+
     http.Response response;
-    await new Future.delayed(const Duration(seconds: 2));
+    await new Future.delayed(const Duration(seconds: 1));
     if (filtro.isNotEmpty) {
       url = url + 'tipo/' + filtro;
     }

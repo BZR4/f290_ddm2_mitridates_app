@@ -24,7 +24,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
             padding: const EdgeInsets.all(16.0),
             child: Text(
               'Filtrar os alunos',
-              // style: Theme.of(context).textTheme.headline4,
+              style: Theme.of(context).textTheme.headline6,
             ),
           ),
           // Card(
@@ -68,7 +68,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
               Card(
                 child: FlatButton(
                   onPressed: () {
-                    print('Trabalho');
+                    print('Emprego');
                     controller.start('0');
 
                     // List<Vitrine> vitrine = Navigator.push(
@@ -78,7 +78,7 @@ class _CategoriasPageState extends State<CategoriasPage> {
                     //             CategoriaPage(vitrine: vitrine)));
                   },
                   child: Text(
-                    'Trabalho',
+                    'Emprego',
                     // style: Theme.of(context).textTheme.headline4,
                   ),
                 ),

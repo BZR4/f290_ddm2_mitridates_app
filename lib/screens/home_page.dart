@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'categorias.dart';
 
+List<Widget> botoesactions = [];
+
 class HomePage extends StatefulWidget {
   @override
   _HomePageState createState() => _HomePageState();
@@ -14,7 +16,6 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   var selectedPage = 0;
   var pages = List<Widget>();
-  List<Widget> botoesactions = [];
 
   final service = VitrineService();
 
@@ -107,7 +108,9 @@ class _HomePageState extends State<HomePage> {
             //           icon: Text('Limpa Filtro', textAlign: TextAlign.center),
             //           onPressed: () {
             //             print('limpa1');
-            //             CategoriasController().start('1');
+            //             setState(() {
+            //               CategoriasController().start('0');
+            //             });
             //           },
             //         ),
             //       ]
