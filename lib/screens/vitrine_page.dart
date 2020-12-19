@@ -95,7 +95,7 @@ class _VitrinePageState extends State<VitrinePage> {
                                           ),
                                           onPressed: () {
                                             var url = vitrine[index].linkedin;
-                                            // service.launchUrl(url);
+                                            service.launchUrl(url);
                                           })
                                       : Text(""),
                                   (vitrine[index].github.isNotEmpty)
