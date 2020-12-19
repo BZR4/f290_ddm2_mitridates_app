@@ -12,7 +12,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   var selectedPage = 0;
-  var pages = List<Widget>();
+  var pages = <Widget>[];
 
   final service = VitrineService();
 
@@ -20,14 +20,14 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     pages.add(VitrinePage());
-    pages.add(CategoriaPage());
+    pages.add(CategoriasPage());
     pages.add(Squad());
 
     _loadVitrine();
   }
 
   _loadVitrine() async {
-    service.getVitrine().then((list) {
+    service.getVitrine('').then((list) {
       list.forEach((element) {
         print(element);
       });

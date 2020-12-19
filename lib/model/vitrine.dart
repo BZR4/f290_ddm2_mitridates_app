@@ -1,10 +1,10 @@
 class Vitrine {
-  String aluno;
-  String descricao;
-  String linkedin;
-  String github;
-  String curso;
-  String tipoVaga;
+  String aluno = '';
+  String descricao = '';
+  String linkedin = '';
+  String github = '';
+  String curso = '';
+  String tipoVaga = '';
 
   Vitrine.fromJson(Map<String, dynamic> json) {
     aluno = json['aluno'];

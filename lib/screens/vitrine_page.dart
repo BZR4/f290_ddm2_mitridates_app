@@ -1,5 +1,6 @@
 import 'package:f290_ddm2_mitridates_app/constants/contants.dart';
 import 'package:f290_ddm2_mitridates_app/model/vitrine.dart';
+import 'package:f290_ddm2_mitridates_app/screens/webview_page.dart';
 import 'package:f290_ddm2_mitridates_app/services/vitrine_service.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -12,7 +13,7 @@ class VitrinePage extends StatefulWidget {
 class _VitrinePageState extends State<VitrinePage> {
   final service = VitrineService();
 
-  List<Vitrine> vitrine = List<Vitrine>();
+  List<Vitrine> vitrine = <Vitrine>[];
 
   @override
   void initState() {
@@ -21,7 +22,7 @@ class _VitrinePageState extends State<VitrinePage> {
   }
 
   _loadData() async {
-    vitrine = await service.getVitrine();
+    vitrine = await service.getVitrine('');
   }
 
   @override
@@ -77,7 +78,7 @@ class _VitrinePageState extends State<VitrinePage> {
                               Text('Curso: ${vitrine[index].curso}',
                                   style: TextStyle(
                                       fontFamily: 'Nunito',
-                                      fontSize: 22,
+                                      fontSize: 18,
                                       fontWeight: FontWeight.w500)),
                               SizedBox(
                                 height: 16,
@@ -86,34 +87,40 @@ class _VitrinePageState extends State<VitrinePage> {
                                   style: TextStyle(fontFamily: 'Nunito')),
                               ButtonBar(
                                 children: [
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.linkedin,
-                                      color: vitrine[index].linkedin.isNotEmpty
-                                          ? kPrimaryColor
-                                          : kDisabledColor,
-                                    ),
-                                    onPressed: () {
-                                      if (vitrine[index].linkedin.isNotEmpty) {
-                                        var url = vitrine[index].linkedin;
-                                        service.launchUrl(url);
-                                      }
-                                    },
-                                  ),
-                                  IconButton(
-                                    icon: Icon(
-                                      FontAwesomeIcons.github,
-                                      color: vitrine[index].github.isNotEmpty
-                                          ? kPrimaryColor
-                                          : kDisabledColor,
-                                    ),
-                                    onPressed: () {
-                                      if (vitrine[index].github.isNotEmpty) {
-                                        var url = vitrine[index].github;
-                                        service.launchUrl(url);
-                                      }
-                                    },
-                                  ),
+                                  (vitrine[index].linkedin.isNotEmpty)
+                                      ? IconButton(
+                                          icon: Icon(
+                                            FontAwesomeIcons.linkedin,
+                                            color: kPrimaryColor,
+                                          ),
+                                          onPressed: () {
+                                            var url = vitrine[index].linkedin;
+                                            // service.launchUrl(url);
+                                          })
+                                      : Text(""),
+                                  (vitrine[index].github.isNotEmpty)
+                                      ? IconButton(
+                                          icon: Icon(
+                                            FontAwesomeIcons.github,
+                                            color: kPrimaryColor,
+                                          ),
+                                          onPressed: () {
+                                            if (vitrine[index]
+                                                .github
+                                                .isNotEmpty) {
+                                              var url = vitrine[index].github;
+                                              service.launchUrl(url);
+                                              // Navigator.push(
+                                              //     context,
+                                              //     MaterialPageRoute(
+                                              //         builder: (BuildContext
+                                              //                 context) =>
+                                              //             ExtrasWebView(
+                                              //                 url: url)));
+                                            }
+                                          },
+                                        )
+                                      : Text(""),
                                 ],
                               )
                             ]),
