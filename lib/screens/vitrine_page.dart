@@ -95,7 +95,15 @@ class _VitrinePageState extends State<VitrinePage> {
                                           ),
                                           onPressed: () {
                                             var url = vitrine[index].linkedin;
-                                            service.launchUrl(url);
+                                            // service.launchUrl(url);
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                builder:
+                                                    (BuildContext context) =>
+                                                        ExtrasWebView(url: url),
+                                              ),
+                                            );
                                           })
                                       : Text(""),
                                   (vitrine[index].github.isNotEmpty)
@@ -109,14 +117,14 @@ class _VitrinePageState extends State<VitrinePage> {
                                                 .github
                                                 .isNotEmpty) {
                                               var url = vitrine[index].github;
-                                              service.launchUrl(url);
-                                              // Navigator.push(
-                                              //     context,
-                                              //     MaterialPageRoute(
-                                              //         builder: (BuildContext
-                                              //                 context) =>
-                                              //             ExtrasWebView(
-                                              //                 url: url)));
+                                              // service.launchUrl(url);
+                                              Navigator.push(
+                                                  context,
+                                                  MaterialPageRoute(
+                                                      builder: (BuildContext
+                                                              context) =>
+                                                          ExtrasWebView(
+                                                              url: url)));
                                             }
                                           },
                                         )

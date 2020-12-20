@@ -7,7 +7,7 @@ class CategoriaPage extends StatelessWidget {
   final service = VitrineService();
   final String filtro;
 
-  CategoriaPage({this.filtro});
+  CategoriaPage(this.filtro);
 
   @override
   Widget build(BuildContext context) {
@@ -89,7 +89,7 @@ class CategoriaPage extends StatelessWidget {
                                               onPressed: () {
                                                 var url =
                                                     vitrine[index].linkedin;
-                                                // service.launchUrl(url);
+                                                service.launchUrl(url);
                                               })
                                           : Text(""),
                                       (vitrine[index].github.isNotEmpty)
@@ -104,7 +104,7 @@ class CategoriaPage extends StatelessWidget {
                                                     .isNotEmpty) {
                                                   var url =
                                                       vitrine[index].github;
-                                                  // service.launchUrl(url);
+                                                  service.launchUrl(url);
                                                 }
                                               },
                                             )

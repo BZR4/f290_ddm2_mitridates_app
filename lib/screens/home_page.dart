@@ -1,7 +1,8 @@
-import 'package:f290_ddm2_mitridates_app/screens/squad_page.dart';
+import 'package:f290_ddm2_mitridates_app/constants/contants.dart';
 import 'package:f290_ddm2_mitridates_app/screens/vitrine_page.dart';
 import 'package:f290_ddm2_mitridates_app/services/vitrine_service.dart';
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'categorias.dart';
 
@@ -21,7 +22,6 @@ class _HomePageState extends State<HomePage> {
     super.initState();
     pages.add(VitrinePage());
     pages.add(CategoriasPage());
-    pages.add(Squad());
 
     _loadVitrine();
   }
@@ -32,6 +32,21 @@ class _HomePageState extends State<HomePage> {
         print(element);
       });
     });
+  }
+
+  final Uri uriEmail = Uri(
+      scheme: 'mailto',
+      path: 'esdrasilva@gmail.com',
+      queryParameters: {
+        'subject': 'Gostaria muito de entra em contato com vocês!'
+      });
+
+  Future launchEmail(String uri) async {
+    if (await canLaunch(uri)) {
+      await launch(uri);
+    } else {
+      throw 'Falha ao enviar email.';
+    }
   }
 
   @override
@@ -53,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 accountEmail: Text('contato@mitridates.com'),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [Colors.deepPurple, Colors.red.shade600],
+                    colors: [kPrimaryColor, kPrimaryColorDark],
                     stops: [0.0, 0.6],
                   ),
                 ),
@@ -63,6 +78,9 @@ class _HomePageState extends State<HomePage> {
                 trailing: Icon(Icons.arrow_forward_ios),
                 title: Text('Fale conosco'),
                 subtitle: Text('Equipe de suporte Mitridates'),
+                onTap: () {
+                  launch(uriEmail.toString());
+                },
               ),
               ListTile(
                 leading: Icon(Icons.access_alarm),
@@ -94,7 +112,6 @@ class _HomePageState extends State<HomePage> {
           BottomNavigationBarItem(icon: Icon(Icons.list), label: 'Vitrine'),
           BottomNavigationBarItem(
               icon: Icon(Icons.umbrella), label: 'Categorias'),
-          BottomNavigationBarItem(icon: Icon(Icons.shield), label: 'Squad'),
         ],
         onTap: (index) {
           setState(() {

@@ -47,7 +47,7 @@ class _CategoriaPagesState extends State<CategoriasPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        CategoriaPage(filtro: '0')));
+                                        CategoriaPage('0')));
                           },
                           child: Text('ABRIR'),
                         )
@@ -82,7 +82,7 @@ class _CategoriaPagesState extends State<CategoriasPage> {
                                 context,
                                 MaterialPageRoute(
                                     builder: (BuildContext context) =>
-                                        CategoriaPage(filtro: '1')));
+                                        CategoriaPage('1')));
                           },
                           child: Text('ABRIR'),
                         )
